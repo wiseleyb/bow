@@ -13,6 +13,10 @@
         margin-top: 20px;
         background: #F9DF0B;
         padding: 10px;
+        background-image: url('MaD-Australia-map.png');
+        background-repeat: no-repeat;
+        background-position: 95% 10px;
+        background-size: 110px;
       }
       .topbar .container a {
         color: #263311;
@@ -21,19 +25,24 @@
         font-weight: bold;
         font-style: italic;
       }
+      form .input {
+        margin-left: 0px;
+      }
   </style>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <div class="topbar">
-      <div class="container">
-        <a class="brand" href="/">Bow</a>
-      </div>
+    <div class="container">
+      <a class="brand" href="/">Bow</a>
+      <br/>
+      <sub>Real Aussies, Real reviews &reg;</sub>
+    </div>
   </div>
   <div class="container">
     <%= yield %>
     <footer>
-      <p>© Bow (thats right) 2011</p>
+      <p>&copy; Bow (thats right) 2011</p>
     </footer>
   </div>
 
