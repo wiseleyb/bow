@@ -21,7 +21,6 @@
         <div>
           <p><b><%=res["id"]%> : <%=res.name%></b></p>
           <p><%=res.primaryAddress.addressLine%><br/><%=res.primaryAddress.suburb%>, <%=res.primaryAddress.state%> <%=res.primaryAddress.postcode%></p>
-          <p><%=res.categories.to_yaml%></p>
           <p>Your Rating: 
             <select name="rating" class="new_rating">
               <option value="1">Did not like</option>
@@ -36,7 +35,8 @@
           @ratings[res["id"]].number_of_ratings ||= 1
           @ratings[res["id"]].number_of_ratings = 1 if @ratings[res["id"]].number_of_ratings <= 0
           %>
-          <p>AVG RATING: <%=@ratings[res["id"]].rating.to_f / @ratings[res["id"]].number_of_ratings.to_f %></p>
+          <p>AVG RATING: 
+          <%=sprintf('%0.2f', @ratings[res["id"]].rating.to_f / @ratings[res["id"]].number_of_ratings.to_f) %> / 5</p>
         </div>
       <% end %>
     <% end %>
