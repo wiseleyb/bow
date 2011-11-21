@@ -1,5 +1,5 @@
 <h3>Search for (e.g. taco, cheap dinner, Max's)</h3>
-<form action="/search" method="get">
+<form action="/" method="get">
   <div class="clearfix">
     <div class="input">
       <%= text_field_tag :search, nil, :class => "xlarge" %>
@@ -43,5 +43,5 @@
 <% end %>
 
 <script type="text/javascript">
-  $(".rating").rating();
+  $(".new_rating").rating({showCancel: true});
 </script>
