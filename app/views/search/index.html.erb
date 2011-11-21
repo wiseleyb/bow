@@ -24,10 +24,11 @@
           <p><%=res.categories.to_yaml%></p>
           <p>Your Rating: 
             <select name="rating" class="new_rating">
-              <option value="0">Did not like</option>
-              <option value="1">Ok</option>
-              <option value="2" selected="selected">Liked</option>
-              <option value="3">Loved!</option>
+              <option value="1">Did not like</option>
+              <option value="2">Ok</option>
+              <option value="3" selected="selected">Liked</option>
+              <option value="4">Loved!</option>
+              <option value="5">Loved alot!</option>
             </select><br/>
             <%= submit_tag "Rate It" %>
           </p>
@@ -43,5 +44,7 @@
 <% end %>
 
 <script type="text/javascript">
-  $(".new_rating").rating({showCancel: true});
+  $(".new_rating").rating({showCancel: false}).bind("change", function(){
+    console.log('hello');
+  });
 </script>
