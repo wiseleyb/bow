@@ -17,33 +17,42 @@
         <%=hidden_field_tag :rating_id, @ratings[res["id"]].id %>
         <%=hidden_field_tag :search_term, params[:search] %>
         <%=hidden_field_tag :sensis_id, res["id"] %>
-        <div>
-          <h3><%=res.name%></h3>
-          <p><%=res.primaryAddress.addressLine%><br/><%=res.primaryAddress.suburb%>, <%=res.primaryAddress.state%> <%=res.primaryAddress.postcode%></p>
-          <p>Your Rating: 
-            <select name="rating" class="new_rating">
-              <option value="1">Did not like</option>
-              <option value="2">Ok</option>
-              <option value="3" selected="selected">Liked</option>
-              <option value="4">Loved!</option>
-              <option value="5">Loved alot!</option>
-            </select><br/>
-            <%= submit_tag "Rate It" %>
-          </p>
-          <%
-          @ratings[res["id"]].number_of_ratings ||= 1
-          @ratings[res["id"]].number_of_ratings = 1 if @ratings[res["id"]].number_of_ratings <= 0
-          %>
-          <p>AVG RATING: 
-          <%=sprintf('%0.2f', @ratings[res["id"]].rating.to_f / @ratings[res["id"]].number_of_ratings.to_f) %> / 5</p>
+        <div class="row">
+          <div class="span8">
+            <h3><%=res.name%></h3>
+            <p><%=res.primaryAddress.addressLine%><br/><%=res.primaryAddress.suburb%>, <%=res.primaryAddress.state%> <%=res.primaryAddress.postcode%></p>
+          </div>
+          <div class="span3">
+            <p>Your Rating: 
+              <select name="rating" class="rating">
+                <option value="1">Did not like</option>
+                <option value="2">Ok</option>
+                <option value="3" selected="selected">Liked</option>
+                <option value="4">Loved!</option>
+                <option value="5">Loved alot!</option>
+              </select><br/>
+            </p>
+            <%
+            @ratings[res["id"]].number_of_ratings ||= 1
+            @ratings[res["id"]].number_of_ratings = 1 if @ratings[res["id"]].number_of_ratings <= 0
+            %>
+            <p>AVG RATING: 
+            <%=sprintf('%0.2f', @ratings[res["id"]].rating.to_f / @ratings[res["id"]].number_of_ratings.to_f) %> / 5</p>
+          </div>
+          <div class="span3">
+            <button type="submit" class="btn">Rate It</button>
+          </div>
         </div>
+        <hr/>
       <% end %>
     <% end %>
   <% end %>
 <% end %>
 
 <script type="text/javascript">
-  $(".new_rating").rating({showCancel: false}).bind("change", function(){
-    console.log('hello');
+  $(".rating").rating({
+    showCancel: false,
+    onChange: function() {
+    }
   });
 </script>

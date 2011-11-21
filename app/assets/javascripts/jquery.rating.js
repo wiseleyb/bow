@@ -197,7 +197,7 @@
 			}	
 
             //Update the stars if the selectbox value changes.
-			self.bind("change", {"selectBox": self, "container": elm},  methods.change);
+			self.bind("change", {"selectBox": self, "container": elm},  (options.onChange || methods.change));
 
         });
 		
