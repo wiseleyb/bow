@@ -9,10 +9,12 @@
 
 <hr>
 
+<% if @results %>
 <% @results.results.each do |res| %>  
   <div>
     <p><b><%=res.id%> : <%=res.name%></b></p>
-    <p><%=res.addressLine%><br/><%=res.suburb%>, <%=res.state%> <%=res.postode%></p>
+    <p><%=res.primaryAddress.addressLine%><br/><%=res.primaryAddress.suburb%>, <%=res.primaryAddress.state%> <%=res.primaryAddress.postcode%></p>
     <p><%=res.categories.to_yaml%></p>
   </div>
+<% end %>
 <% end %>
