@@ -6,13 +6,30 @@
   <%= javascript_include_tag "application" %>
   <style type="text/css">
       body {
-        padding-top: 60px;
+        padding-top: 100px;
+      }
+      .topbar .container {
+        height: 85px;
+        margin-top: 20px;
+        background: #F9DF0B;
+        padding: 10px;
+      }
+      .topbar .container a {
+        color: #263311;
+        font-size: 5em;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-style: italic;
       }
   </style>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <div class="topbar">
+      <div class="container">
+        <a class="brand" href="/">Bow</a>
+      </div>
+  </div>
   <div class="container">
     <%= yield %>
     <footer>
