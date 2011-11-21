@@ -1,0 +1,29 @@
+<h1>Listing ratings</h1>
+
+<table>
+  <tr>
+    <th>Sensis</th>
+    <th>Rating</th>
+    <th>Restaurant name</th>
+    <th>User name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ratings.each do |rating| %>
+  <tr>
+    <td><%= rating.sensis_id %></td>
+    <td><%= rating.rating %></td>
+    <td><%= rating.restaurant_name %></td>
+    <td><%= rating.user_name %></td>
+    <td><%= link_to 'Show', rating %></td>
+    <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
+    <td><%= link_to 'Destroy', rating, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rating', new_rating_path %>

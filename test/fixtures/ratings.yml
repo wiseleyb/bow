@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sensis_id: 1
+  rating: 1
+  restaurant_name: MyString
+  user_name: MyString
+
+two:
+  sensis_id: 1
+  rating: 1
+  restaurant_name: MyString
+  user_name: MyString

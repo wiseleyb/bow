@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Sensis:</b>
+  <%= @rating.sensis_id %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @rating.rating %>
+</p>
+
+<p>
+  <b>Restaurant name:</b>
+  <%= @rating.restaurant_name %>
+</p>
+
+<p>
+  <b>User name:</b>
+  <%= @rating.user_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_rating_path(@rating) %> |
+<%= link_to 'Back', ratings_path %>
