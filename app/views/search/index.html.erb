@@ -10,7 +10,6 @@
 
 <% if @results %>
   <% @results.results.each do |res| %>  
-    <p>RID <%=res["id"]%></p>
     <% if @ratings[res["id"]].nil? %>
       <p>nil</p>
     <% else %>
@@ -19,7 +18,7 @@
         <%=hidden_field_tag :search_term, params[:search] %>
         <%=hidden_field_tag :sensis_id, res["id"] %>
         <div>
-          <p><b><%=res["id"]%> : <%=res.name%></b></p>
+          <h3><%=res.name%></h3>
           <p><%=res.primaryAddress.addressLine%><br/><%=res.primaryAddress.suburb%>, <%=res.primaryAddress.state%> <%=res.primaryAddress.postcode%></p>
           <p>Your Rating: 
             <select name="rating" class="new_rating">
