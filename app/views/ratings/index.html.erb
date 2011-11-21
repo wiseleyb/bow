@@ -17,6 +17,12 @@
     <td><%= rating.rating %></td>
     <td><%= rating.restaurant_name %></td>
     <td><%= rating.user_name %></td>
+    <select class="rating">
+        <option value="0">Did not like</option>
+        <option value="1">Ok</option>
+        <option value="2" selected="selected">Liked</option>
+        <option value="3">Loved!</option>
+    </select>
     <td><%= link_to 'Show', rating %></td>
     <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
     <td><%= link_to 'Destroy', rating, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -27,3 +33,6 @@
 <br />
 
 <%= link_to 'New Rating', new_rating_path %>
+<script type="text/javascript">
+  $(".rating").rating();
+</script>
