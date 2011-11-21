@@ -21,19 +21,24 @@
         font-weight: bold;
         font-style: italic;
       }
+      form .input {
+        margin-left: 0px;
+      }
   </style>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <div class="topbar">
-      <div class="container">
-        <a class="brand" href="/">Bow</a>
-      </div>
+    <div class="container">
+      <a class="brand" href="/">Bow</a>
+      <br/>
+      <sub>Real Aussies, Real reviews &reg;</sub>
+    </div>
   </div>
   <div class="container">
     <%= yield %>
     <footer>
-      <p>© Bow (thats right) 2011</p>
+      <p>&copy; Bow (thats right) 2011</p>
     </footer>
   </div>
 

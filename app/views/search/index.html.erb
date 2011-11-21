@@ -1,13 +1,12 @@
+<h3>Search for (e.g. taco, cheap dinner, Max's)</h3>
 <form action="/search" method="get">
-  <div class="field">
-    <%= label_tag :search %><br />
-    <%= text_field_tag :search %>
-  </div>
-  
-  <%=submit_tag "Find" %>
+  <div class="clearfix">
+    <div class="input">
+      <%= text_field_tag :search, nil, :class => "xlarge" %>
+    <input type="submit" class="btn" value="Find">
+    </div>
+  </div><!-- /clearfix -->
 </form>
-
-<hr>
 
 <% if @results %>
 <% @results.results.each do |res| %>  
