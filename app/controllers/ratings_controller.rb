@@ -24,12 +24,6 @@ class RatingsController < ApplicationController
   # GET /ratings/new
   # GET /ratings/new.json
   def new
-    @rating = Rating.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @rating }
-    end
   end
 
   # GET /ratings/1/edit
@@ -40,33 +34,30 @@ class RatingsController < ApplicationController
   # POST /ratings
   # POST /ratings.json
   def create
-    @rating = Rating.new(params[:rating])
-
-    respond_to do |format|
-      if @rating.save
-        format.html { redirect_to @rating, :notice => 'Rating was successfully created.' }
-        format.json { render :json => @rating, :status => :created, :location => @rating }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @rating.errors, :status => :unprocessable_entity }
-      end
+    if params[:rating_id]
+      @rating = Rating.find_by_id(params[:rating_id])
     end
+    @rating ||= Rating.new
+    @rating.sensis_id = params[:sensis_id]
+    @rating.number_of_ratings ||= 0
+    @rating.number_of_ratings += 1
+    @rating.rating ||= 0
+    @rating.rating += params[:rating].to_i
+    @rating.save!
+    redirect_to "/search?search=#{params[:search_term]}" and return
   end
 
   # PUT /ratings/1
   # PUT /ratings/1.json
   def update
-    @rating = Rating.find(params[:id])
-
-    respond_to do |format|
-      if @rating.update_attributes(params[:rating])
-        format.html { redirect_to @rating, :notice => 'Rating was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.json { render :json => @rating.errors, :status => :unprocessable_entity }
-      end
-    end
+    @rating = Rating.find(params[:rating_id])
+    @rating.sensis_id = params[:sensis_id]
+    @rating.number_of_ratings ||= 0
+    @rating.number_of_ratings += 1
+    @rating.rating ||= 0
+    @rating.rating += params[:rating].to_i
+    @rating.save!
+    redirect_to "/search?search=#{params[:search_term]}" and return
   end
 
   # DELETE /ratings/1

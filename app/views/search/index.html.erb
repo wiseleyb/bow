@@ -10,11 +10,41 @@
 <hr>
 
 <% if @results %>
-<% @results.results.each do |res| %>  
-  <div>
-    <p><b><%=res.id%> : <%=res.name%></b></p>
-    <p><%=res.primaryAddress.addressLine%><br/><%=res.primaryAddress.suburb%>, <%=res.primaryAddress.state%> <%=res.primaryAddress.postcode%></p>
-    <p><%=res.categories.to_yaml%></p>
-  </div>
+  <% @results.results.each do |res| %>  
+    <p>RID <%=res["id"]%></p>
+    <% if @ratings[res["id"]].nil? %>
+      <p>nil</p>
+    <% else %>
+      <%=form_for(@ratings[res["id"]]) do |f| %>
+        <%=hidden_field_tag :rating_id, @ratings[res["id"]].id %>
+        <%=hidden_field_tag :search_term, params[:search] %>
+        <%=hidden_field_tag :sensis_id, res["id"] %>
+        <div>
+          <p><b><%=res["id"]%> : <%=res.name%></b></p>
+          <p><%=res.primaryAddress.addressLine%><br/><%=res.primaryAddress.suburb%>, <%=res.primaryAddress.state%> <%=res.primaryAddress.postcode%></p>
+          <p><%=res.categories.to_yaml%></p>
+          <p>Your Rating: 
+            <select name="rating" class="new_rating">
+              <option value="0">Did not like</option>
+              <option value="1">Ok</option>
+              <option value="2" selected="selected">Liked</option>
+              <option value="3">Loved!</option>
+            </select><br/>
+            <%= submit_tag "Rate It" %>
+          </p>
+          <%
+          @ratings[res["id"]].number_of_ratings ||= 1
+          @ratings[res["id"]].number_of_ratings = 1 if @ratings[res["id"]].number_of_ratings <= 0
+          %>
+          <p>AVG RATING: <%=@ratings[res["id"]].rating.to_f / @ratings[res["id"]].number_of_ratings.to_f %></p>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
 <% end %>
-<% end %>
+
+
+
+<script type="text/javascript">
+  $(".rating").rating();
+</script>
