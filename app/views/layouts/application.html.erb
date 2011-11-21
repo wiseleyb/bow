@@ -4,11 +4,21 @@
   <title>Bow</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
+  <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+  </style>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <div class="container">
+    <%= yield %>
+    <footer>
+      <p>© Bow (thats right) 2011</p>
+    </footer>
+  </div>
 
 </body>
 </html>
