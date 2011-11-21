@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
 
   def index
-    if params[:search]
+    unless params[:search].blank?
       @results = Sensis.search(:query => params[:search], :location => "sydney")
       @ratings = {}
       if @results
