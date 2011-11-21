@@ -44,7 +44,7 @@ class RatingsController < ApplicationController
     @rating.rating ||= 0
     @rating.rating += params[:rating].to_i
     @rating.save!
-    redirect_to "/search?search=#{params[:search_term]}" and return
+    redirect_to "/?search=#{params[:search_term]}" and return
   end
 
   # PUT /ratings/1
@@ -57,7 +57,7 @@ class RatingsController < ApplicationController
     @rating.rating ||= 0
     @rating.rating += params[:rating].to_i
     @rating.save!
-    redirect_to "/search?search=#{params[:search_term]}" and return
+    redirect_to "/?search=#{params[:search_term]}" and return
   end
 
   # DELETE /ratings/1
